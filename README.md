@@ -78,21 +78,17 @@ Seguindo as **heurísticas de Nielsen**, garantimos uma experiência de usuário
 
 ### **Passos para Execução**
 
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/usuario/configurador-recargas.git
+####1. Clone o repositório:
+   git clone https://github.com/vinicius-domingues/Energood.git
 
-2. Instale as dependências do frontend e backend:
-# Backend
+####2. Instale as dependências do frontend e backend:
+
+####3. Execute o backend:
 npm install
-
-# Frontend
-npm install
-
-3. Execute o backend:
 node server.js
 
-4. Execute o frontend:
+####4. Execute o Frontend
+npm install
 npm start
 
 ---
