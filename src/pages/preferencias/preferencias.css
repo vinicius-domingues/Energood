@@ -1,0 +1,106 @@
+.preferencias-container {
+  padding: 20px;
+}
+
+.preferencias-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.preferencias-header h2 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.edit-btn {
+  padding: 8px 16px;
+  background-color: #6200ee;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.preferencias-content p {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.preferencias-edit-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 20px;
+  z-index: 1000;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.popup-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input-group select {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.save-btn {
+  background-color: #6200ee;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.edit-btn {
+  background-color: #6200ee;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.preferencias-content {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+button.save-btn:hover,
+button.edit-btn:hover {
+  opacity: 0.8;
+}
+
+.preferencias-content p {
+  font-size: 18px;
+  margin: 10px 0;
+  color: #333;
+}
+

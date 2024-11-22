@@ -1,0 +1,80 @@
+.fontesdeenergia-container {
+    background-color: #FCFCFC;
+    padding: 0;
+    margin: 0;
+}
+
+.fontesdeenergia-header {
+    font-family: 'Lexend Zetta', sans-serif;
+    font-size: 24px;
+    margin: 25px;
+}
+
+.fontesdeenergia-section {
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    justify-content: flex-start;
+    margin: 0;
+    height: 375px;
+    color: white;
+    width: 100%;
+}
+
+.fontesdeenergia-section .image-container {
+    flex: 0 0 200px;
+    margin: 30px;
+}
+
+.fontesdeenergia-section .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.fontesdeenergia-section .text-container {
+    flex: 1;
+}
+
+.fontesdeenergia-section .section-title {
+    font-family: 'Lexend Zetta', sans-serif;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.fontesdeenergia-section .section-description {
+    font-family: 'Tauri', sans-serif;
+    font-size: 16px;
+    padding-right: 10px;
+}
+
+.fontesdeenergia-section-1 {
+    background-color: #1D4A00;
+}
+
+.fontesdeenergia-section-2 {
+    background-color: #3C7B14;
+}
+
+.fontesdeenergia-section-3 {
+    background-color: #6DB53F;
+}
+
+.fontesdeenergia-section .section-description p {
+    margin: 5px 0;
+}
+
+.lista {
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+.lista li {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    padding-top: 10px;
+}
+
+.lista li strong {
+    font-weight: bold;
+}

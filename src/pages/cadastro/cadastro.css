@@ -1,0 +1,108 @@
+
+
+.cadastro-container {
+    display: flex;
+    height: 100vh;
+  }
+  
+    .right-side {
+    width: 50%;
+    background-color: #458D16;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+        }
+
+  .background-image {
+    width: 60%;
+    object-fit: cover;
+  }
+  
+  .right-side {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FCFCFC;
+    padding: 40px;
+  }
+  
+  .cadastro-box {
+    width: 500px;
+    display: flex;
+    box-shadow: -10px 10px 1px white;
+    border: 1px solid #458D16;
+    justify-content: center;
+    height: 500px; 
+    padding: 20px; 
+    background-color: white;
+  }
+  
+  .cadastro-conteudo  {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+  }
+
+  .right-side img {
+    max-width: 100%; 
+    max-height: 100%; 
+    object-fit: contain; 
+  }
+
+  .cadastro-conteudo h2 {
+    text-align: left;
+
+  }
+  
+  .form-camps {
+    margin-top: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .btn-cadastrar, .btn-voltar {
+    padding: 10px 20px;
+    border: 1px solid;
+    cursor: pointer;
+  }
+  
+  .btn-cadastrar {
+    color: #458D16;
+    background-color: #FCFCFC;
+    border-color: #458D16;
+  }
+  
+  .btn-voltar {
+    color: #FCFCFC;
+    background-color: #458D16;
+    border-color: #458D16;
+  }
+  
+  .error-message {
+    color: red;
+    text-align: center;
+    margin-top: 20px;
+  }
+  

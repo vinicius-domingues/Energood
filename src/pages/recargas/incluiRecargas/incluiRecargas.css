@@ -1,0 +1,93 @@
+/* Estilização geral */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+  }
+  
+  /* Container principal */
+  div {
+    padding: 20px;
+  }
+  
+  /* Cabeçalho */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  header h2 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  header button {
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  header button:hover {
+    background-color: #3700b3;
+  }
+  
+  /* Formulário principal */
+  main {
+    margin-top: 20px;
+  }
+  
+  main div {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+  }
+  
+  main label {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  main input,
+  main select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+  }
+  
+  main input:focus,
+  main select:focus {
+    outline: none;
+    border-color: #458D16;
+  }
+  
+  header button {
+    align-self: flex-end;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    header h2 {
+      font-size: 14px;
+    }
+  
+    main div {
+      max-width: 100%;
+    }
+  
+    header button {
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+  }
+  
