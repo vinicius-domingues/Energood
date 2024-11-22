@@ -1,7 +1,5 @@
 # 🚗⚡️ **Configurador de Recargas para Carros Elétricos com Energia Renovável**
 
-Bem-vindo ao **Configurador de Recargas para Carros Elétricos**, um aplicativo web para ajudar proprietários de carros elétricos a agendarem e configurarem as recargas de seus veículos com fontes de energia renovável, como solar, eólica e hidrelétrica.
-
 ---
 
 ## 🛠️ **Tecnologias Utilizadas**
