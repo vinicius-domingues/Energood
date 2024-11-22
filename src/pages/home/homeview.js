@@ -29,7 +29,13 @@ const HomeView = () => {
     <div className="home-container">
 
       <Header isLoggedIn={isLoggedIn} />
-      <h3 style={{marginLeft:'20px', marginTop:'20px'}}>Olá <b style={{color:'green'}}>{username}</b>, hoje é um belo dia para usar energia consciente.</h3>
+      {username && (
+        <h3 style={{ marginLeft: '20px', marginTop: '20px' }}>
+          Olá <b style={{ color: 'green' }}>{username}</b>, hoje é um belo dia para usar energia consciente.
+        </h3>
+      )}
+
+      
       <main className="home-main">
 
         <div
