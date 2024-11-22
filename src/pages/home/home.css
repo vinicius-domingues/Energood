@@ -1,0 +1,63 @@
+
+.home-header {
+  background-color: #63B131;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 20px;
+  margin: 0;
+}
+
+.login-link {
+  font-family: 'Tauri', sans-serif;
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.user-icon {
+  margin-left: 5px;
+}
+
+/* Estilo geral */
+.home-container {
+  background-color: #FCFCFC;
+  height: 100vh;
+}
+
+.home-main {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+
+.card {
+  padding: 30px;
+  border-radius: 10px;
+  font-family: 'Tauri', sans-serif;
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  height: 300px;
+  width: 300px;
+  transition: transform 0.3s ease; 
+}
+
+.energia-card {
+  background: linear-gradient(to bottom, #498324, transparent);
+}
+
+.recargas-card {
+  background: linear-gradient(to bottom, #498324, transparent);
+}
+
+.preferencias-card {
+  background: linear-gradient(to bottom, #498324, transparent);
+}
+
+
+.card:hover {
+  transform: scale(1.1); 
+}

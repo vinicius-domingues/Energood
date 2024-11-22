@@ -1,0 +1,9 @@
+h1 .logo{
+    cursor: pointer;
+    color: white;
+}
+
+.login-link:hover{
+    font-weight: bolder;
+    font-size: 20px;
+}

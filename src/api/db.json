@@ -1,0 +1,42 @@
+{
+  "recargas": [
+    {
+      "id": "7fd9",
+      "horaInicio": 18,
+      "dataInicio": "2024-11-20",
+      "nomeCarro": "BYD da Paulista",
+      "idUser": 1,
+      "tipoRecarga": 5
+    },
+    {
+      "id": "cc3c",
+      "horaInicio": 2,
+      "dataInicio": "2024-11-20",
+      "nomeCarro": "Tesla2",
+      "idUser": 1,
+      "tipoRecarga": 1
+    },
+    {
+      "id": "aa4d",
+      "horaInicio": 9,
+      "dataInicio": "2024-11-21",
+      "nomeCarro": "Tesla5",
+      "idUser": 1,
+      "tipoRecarga": 1
+    }
+  ],
+  "usuarios": [
+    {
+      "id": "1111",
+      "senha": "senha123",
+      "preferenciaTipoRecarga": 3,
+      "preferenciaHorario": 2
+    },
+    {
+      "id": "2222",
+      "senha": "senha456",
+      "preferenciaTipoRecarga": 2,
+      "preferenciaHorario": 1
+    }
+  ]
+}

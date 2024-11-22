@@ -1,0 +1,103 @@
+.login-container {
+  display: flex;
+  height: 100vh;
+}
+
+.left-side {
+  width: 50%;
+  background-color: #458D16;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; 
+  padding: 40px;
+}
+
+.left-side img {
+  max-width: 100%; 
+  max-height: 100%; 
+  object-fit: contain; 
+}
+
+.right-side {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-box {
+  width: 500px;
+  display: flex;
+  box-shadow: 10px 10px 1px #458D16;
+  border: 1px solid #458D16;
+  justify-content: center;
+  height: 500px;
+  padding: 20px;
+}
+
+.login-conteudo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+h2 {
+  margin: 0;
+  font-size: 24px;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  background-color: #D9D9D9;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+button {
+  padding: 10px;
+  border: 2px solid #458D16;
+  cursor: pointer;
+  flex-grow: 1;
+}
+
+.btn-cadastrar {
+  color: #458D16;
+  background-color: #FCFCFC;
+}
+
+.btn-entrar {
+  color: #FCFCFC;
+  background-color: #458D16;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 15px;
+  text-align: center;
+}
