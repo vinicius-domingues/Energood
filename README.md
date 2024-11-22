@@ -76,16 +76,20 @@ Seguindo as **heurísticas de Nielsen**, garantimos uma experiência de usuário
 - **Node.js** (versão 14 ou superior)
 - **NPM** (ou Yarn)
 
+
 ### **Passos para Execução**
 
 1. Clone o repositório:
    git clone https://github.com/vinicius-domingues/Energood.git
 
+
 2. Instale as dependências do frontend e backend:
+
 
 3. Execute o backend:
 - npm install
 - node server.js
+
 
 4. Execute o Frontend
 - npm install
