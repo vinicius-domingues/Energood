@@ -43,8 +43,6 @@ const MinhasRecargas = () => {
             setLoading(false);
           });
       };
-      
-      
 
     useEffect(() => {
         fetchRecargas();
@@ -55,6 +53,7 @@ const MinhasRecargas = () => {
     };
 
     const calculateCarregando = (horaInicio, dataInicio) => {
+        // Mapeamento das horas baseadas no número de hora
         const horaInicioMap = {
             1: "12:00",
             2: "13:00",
@@ -82,19 +81,33 @@ const MinhasRecargas = () => {
             24: "11:00",
         };
     
+        // A data e hora atual
         const agora = new Date();
+        // Pegando a hora formatada do mapeamento
         const horaInicioFormatted = horaInicioMap[horaInicio];
-        
-        if (!horaInicioFormatted) {
-            console.error("Hora inválida fornecida: ", horaInicio);
-            return { porcentagem: 0, horas: 0, horaExatoInicio: null };
-        }
     
+        console.log("horaInicioFormatted: ", horaInicioFormatted);
+        console.log("agora: ", agora);
+        console.log("dataInicio: ", dataInicio);
+    
+        // Desestruturando a dataInicio para pegar ano, mês e dia
         const [ano, mes, dia] = dataInicio.split('-');
-        const dataExataInicio = new Date(`${ano}-${mes}-${dia}T${horaInicioFormatted}`);
-        const diffInMs = agora - dataExataInicio;
-        const horas = diffInMs / (1000 * 60 * 60);
+        
+        // Formando a nova data com a hora formatada (data sem hora inicial)
+        const dataExataInicio = new Date(`${ano}-${mes}-${dia}T${horaInicioFormatted}:00`);
     
+        console.log("dataExataInicio: ", dataExataInicio);
+    
+        // Calculando a diferença em milissegundos entre agora e dataExataInicio
+        const diffInMs = agora - dataExataInicio;
+    
+        // Calculando as horas e minutos
+        const horas = Math.floor(diffInMs / (1000 * 60 * 60)); // Convertendo para horas inteiras
+        const minutos = Math.floor((diffInMs / (1000 * 60)) % 60); // Convertendo para minutos restantes
+    
+        console.log(`Diferença: ${horas} horas e ${minutos} minutos`);
+    
+        // Definindo a porcentagem com base na diferença de horas
         let porcentagem = 0;
         if (horas <= 2) {
             porcentagem = 20;
@@ -106,15 +119,25 @@ const MinhasRecargas = () => {
             porcentagem = 80;
         } else if (horas <= 10) {
             porcentagem = 99;
-        } else {
-            porcentagem = 100;
-        }
+        } 
     
-        return { porcentagem, horas, dataExataInicio };
+        // Retornando a porcentagem, horas, minutos e a data de início exata
+        return { porcentagem, horas, minutos, dataExataInicio };
     };
 
     const formatDataInicio = (dataInicio, horaInicio) => {
         const date = new Date(`${dataInicio}T${horaInicio}`);
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const year = date.getFullYear();
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+
+        return `${day}/${month}/${year} às ${hours}:${minutes}`;
+    };
+
+    const formatDate = (data) => {
+        const date = new Date(data);
         const day = String(date.getDate()).padStart(2, '0');
         const month = String(date.getMonth() + 1).padStart(2, '0');
         const year = date.getFullYear();
@@ -144,7 +167,7 @@ const MinhasRecargas = () => {
                             ? `CARREGAMENTO AGENDADO (${porcentagem}%)`
                             : porcentagem === 100
                               ? 'CARREGADO (100%)'
-                              : `CARREGANDO À ${horas.toFixed(1)} HORAS (${porcentagem}%)`;
+                              : `CARREGANDO (${porcentagem}%)`;
 
                             return (
                                 <div key={recarga.id} className="recarga-card">
@@ -157,18 +180,7 @@ const MinhasRecargas = () => {
                                         <p style={{ paddingLeft: '20px', paddingTop: '20px', color: '#808080' }}>
                                             <strong>Início da recarga: </strong>
                                             <span style={{ color: '#B6B6B6' }}>
-                                                {(() => {
-                                                    const { dataExataInicio } = calculateCarregando(recarga.horaInicio, recarga.dataInicio);
-                                                    const formattedDate = new Date(dataExataInicio);
-
-                                                    const day = String(formattedDate.getDate()).padStart(2, '0');
-                                                    const month = String(formattedDate.getMonth() + 1).padStart(2, '0');
-                                                    const year = formattedDate.getFullYear();
-                                                    const hours = String(formattedDate.getHours()).padStart(2, '0');
-                                                    const minutes = String(formattedDate.getMinutes()).padStart(2, '0');
-
-                                                    return `${day}/${month}/${year} às ${hours}:${minutes}`;
-                                                })()}
+                                                {formatDate(recarga.dataInicio)}
                                             </span>
                                         </p>
 
