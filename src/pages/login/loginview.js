@@ -16,35 +16,51 @@ const LoginView = () => {
     window.location.href = '/cadastro';
   };
 
-  const handleEntrar = async () => {
+  const handleEntrar = () => {
     if (id === '' || senha === '') {
       displayErrorMessage('ID e senha são obrigatórios!');
       return;
     }
   
-    const response = await fetch('http://backend:3000/users/login', {
+    const username = id;
+  
+    const login = JSON.stringify({ username, senha });
+  
+    console.log("Ao login: ", login);
+  
+    fetch('http://localhost:3000/users/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ id, senha }), 
-    });
-
-    const data = await response.json();
+      body: login,
+    })
+      .then((response) => {
+        if (!response.ok) {
+          return response.text().then((error) => {
+            throw new Error(`Erro no login: ${response.status} - ${error}`);
+          });
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Token:", data, data.token);
   
-    console.log("Token:", data, data.token);
+        if (data.token) {
+          localStorage.setItem('authToken', data.token);
+          localStorage.setItem('idUser', data.id);
+          localStorage.setItem('username', data.username);
   
-    if (data.token) { 
-
-      localStorage.setItem('authToken', data.token);
-      localStorage.setItem('idUser', data.id);
-      localStorage.setItem('username', data.username);
-
-      console.log('Token armazenado com sucesso');
-
-      window.location.href = '/';
-    } 
+          console.log('Token armazenado com sucesso');
+  
+          window.location.href = '/';
+        }
+      })
+      .catch((error) => {
+        console.error("Erro ao fazer login:", error.message);
+      });
   };
+  
 
   return (
     <div className="login-container">
@@ -59,7 +75,7 @@ const LoginView = () => {
               <div className="form-group">
                 <label>ID</label>
                 <input
-                  type="number"
+                  type="text"
                   id="id"
                   placeholder="Digite seu ID"
                   value={id}

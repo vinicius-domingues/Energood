@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import Header from '../../../components/loginStatus';
 
-const  IncluirRecargaView = () => {
+const IncluirRecargaView = () => {
   const [nomeCarro, setNomeCarro] = useState('');
   const [tipoRecarga, setTipoRecarga] = useState('');
   const [horaInicio, setHoraInicio] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const idUser = 1;
   const dataInicio = new Date().toISOString().split('T')[0];
+  let idUser = localStorage.getItem('idUser'); // Alterado para let para permitir reatribuição
 
   const salvarRecarga = async () => {
     if (!nomeCarro || !tipoRecarga || !horaInicio) {
@@ -15,15 +15,16 @@ const  IncluirRecargaView = () => {
       return;
     }
 
+    idUser = Number(idUser); // Convertendo para inteiro
+
     const novaRecarga = {
       horaInicio: parseInt(horaInicio),
       nomeCarro,
-      dataInicio,
-      tipoRecarga: parseInt(tipoRecarga),
+      tipoRecarga,
       idUser
     };
 
-    console.log("Pré ida: ", novaRecarga)
+    console.log("Pré ida: ", novaRecarga);
 
     const authToken = localStorage.getItem('authToken'); 
 
@@ -31,14 +32,14 @@ const  IncluirRecargaView = () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${authToken}`, 
+        'Authorization': `Bearer ${authToken}`,
       },
       body: JSON.stringify(novaRecarga),
     })
       .then((response) => {
-        if (response.ok || !response.ok) {
+        if (response.ok) {
           alert('Recarga salva com sucesso!');
-          window.location.href = '/recargas'; 
+          window.location.href = '/recargas';
         }
       });
   };

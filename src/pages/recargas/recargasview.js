@@ -9,20 +9,42 @@ const MinhasRecargas = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(true);
     const navigate = useNavigate();
 
-    const fetchRecargas = async () => {
-        try {
-            const response = await fetch('http://localhost:4000/recargas');
+    const fetchRecargas = () => {
+        const idUser = localStorage.getItem('idUser'); 
+        const authToken = localStorage.getItem('authToken'); 
+      
+        if (!idUser || !authToken) {
+          console.error('ID do usuário ou token não encontrados no localStorage.');
+          setLoading(false);
+          return;
+        }
+      
+        fetch(`http://localhost:3000/recargas/${idUser}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${authToken}`, 
+          },
+        })
+          .then((response) => {
             if (!response.ok) {
-                throw new Error('Erro ao buscar recargas.');
+              return response.text().then((error) => {
+                throw new Error(`Erro ao buscar recargas: ${error}`);
+              });
             }
-            const data = await response.json();
+            return response.json();
+          })
+          .then((data) => {
             setRecargas(data);
             setLoading(false);
-        } catch (error) {
-            console.error('Erro ao buscar recargas:', error);
+          })
+          .catch((error) => {
+            console.error('Erro ao buscar recargas:', error.message);
             setLoading(false);
-        }
-    };
+          });
+      };
+      
+      
 
     useEffect(() => {
         fetchRecargas();

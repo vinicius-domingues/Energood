@@ -10,33 +10,57 @@ const Preferencias = () => {
   const [tempPreferenciaTipoRecarga, setTempPreferenciaTipoRecarga] = useState('');
   const [tempPreferenciaHorario, setTempPreferenciaHorario] = useState('');
 
-  const idUser = localStorage.getItem('idUser');
+  let idUser = localStorage.getItem('idUser'); // Alterado para let para permitir reatribuição
+
 
   useEffect(() => {
     const authToken = localStorage.getItem('authToken');
-
+  
+    console.log("Dados: ", idUser, authToken);
+  
     if (authToken) {
-      fetch(`http://localhost:3000/users/${idUser}`, {
+      fetch(`http://localhost:3000/users/${idUser}`, { // Mantivemos a requisição como estava
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${authToken}`, 
+          'Authorization': `Bearer ${authToken}`,
         },
       })
         .then(response => response.json())
         .then(data => {
-          const currentUser = data; 
-          setUserPreferences(currentUser);
-          setPreferenciaTipoRecarga(currentUser.preferenciaTipoRecarga);
-          setPreferenciaHorario(currentUser.preferenciaHorario);
-          setTempPreferenciaTipoRecarga(currentUser.preferenciaTipoRecarga); 
-          setTempPreferenciaHorario(currentUser.preferenciaHorario); 
+          // Certifique-se de que data seja um array, ou é um objeto
+          if (Array.isArray(data)) {
+            // Aqui, filtramos o usuário com o idUser se a resposta for um array
+            const currentUser = data.find(user => user.id === Number(idUser));
+  
+            if (currentUser) {
+              console.log("Retorno: ", currentUser);
+              setUserPreferences(currentUser);
+              setPreferenciaTipoRecarga(currentUser.preferenciaTipoRecarga);
+              setPreferenciaHorario(currentUser.preferenciaHorario);
+              setTempPreferenciaTipoRecarga(currentUser.preferenciaTipoRecarga);
+              setTempPreferenciaHorario(currentUser.preferenciaHorario);
+            } else {
+              console.error('Usuário não encontrado.');
+            }
+          } else {
+            // Se o retorno for um objeto, não é necessário fazer o find
+            const currentUser = data;
+            console.log("Retorno: ", currentUser);
+            setUserPreferences(currentUser);
+            setPreferenciaTipoRecarga(currentUser.preferenciaTipoRecarga);
+            setPreferenciaHorario(currentUser.preferenciaHorario);
+            setTempPreferenciaTipoRecarga(currentUser.preferenciaTipoRecarga);
+            setTempPreferenciaHorario(currentUser.preferenciaHorario);
+          }
         })
         .catch(error => console.error('Erro ao carregar as preferências:', error));
     } else {
       console.error('Token de autenticação não encontrado.');
     }
-  }, [idUser]); 
+  }, [idUser]);
+  
+  
 
   const horarioMap = {
     1: '12:00',
